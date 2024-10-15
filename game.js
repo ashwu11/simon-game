@@ -1,6 +1,6 @@
 const buttonColours = ["red", "blue", "green", "yellow"];
 const gamePattern = [];
-const userPattern = [];
+let userPattern = [];
 let started = false;
 let level = 0;
 
@@ -15,6 +15,7 @@ $(document).keypress(function() {
 function nextSequence() {
     level++;
     $("#level-title").text("Level " + level);
+    userPattern = [];
 
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = buttonColours[randomNumber];
@@ -28,6 +29,7 @@ $(".btn").click(function() {
     userPattern.push(this.id);
     animatePress(this.id);
     playSound(this.id);
+    checkAnswer();
 });
 
 function playSound(colour) {
@@ -41,4 +43,17 @@ function animatePress(currentColour) {
     setTimeout(() => {
         currentButton.removeClass("pressed");
     }, 100)
+}
+
+function checkAnswer() {
+    const index = userPattern.length - 1;
+    if (gamePattern[index] == userPattern[index]) {
+        console.log("success");
+    } else {
+        console.log("fail");
+    }
+
+    if (gamePattern.length == userPattern.length) {
+        setTimeout(nextSequence, 1000);
+    }
 }
