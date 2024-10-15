@@ -54,7 +54,7 @@ function startGame() {
     started = true;
 }
 
-function reset() {
+function resetGame() {
     $("#level-title").text("Game Over!\nPress any key to restart :]");
     gamePattern = [];
     userPattern = [];
@@ -75,7 +75,7 @@ function checkAnswer() {
     } else {
         console.log("nooo :(");
         playSound("wrong", volume = 0.1);
-        reset();
+        resetGame();
 
         // animation
         $("body").addClass("game-over");
