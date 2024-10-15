@@ -55,7 +55,7 @@ function startGame() {
 }
 
 function resetGame() {
-    $("#level-title").text("Game Over!\nPress any key to restart :]");
+    $("#level-title").text("Game Over! Press any key to restart :]");
     gamePattern = [];
     userPattern = [];
     started = false;
